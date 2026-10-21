@@ -1,0 +1,30 @@
+# ---- 密钥与本地配置（绝不提交）----
+.env
+*.env
+!.env.example
+*.local
+secrets/
+.secrets/
+*.ini
+!examples/*.example
+cloudflare.ini
+.msmtprc
+*.pem
+*.key
+*.crt
+*.token
+
+# ---- 日志与状态 ----
+*.log
+logs/
+
+# ---- 编辑器 / 系统 ----
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# ---- 依赖与构建产物 ----
+node_modules/
+dist/
+.wrangler/
