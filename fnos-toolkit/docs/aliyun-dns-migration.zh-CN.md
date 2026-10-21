@@ -307,7 +307,7 @@ Test-NetConnection nas.example.com -Port 5667
 
 | 出问题的环节 | 回滚动作 |
 |---|---|
-| 解析不正常 | 域名控制台把 NS 改回 Cloudflare（`cheryl.ns.cloudflare.com` / `ernest.ns.cloudflare.com`），等 24–48h；Cloudflare 上的记录如果没删，立刻恢复 |
+| 解析不正常 | 域名控制台把 NS 改回 Cloudflare（`<你的NS1>.ns.cloudflare.com` / `<你的NS2>.ns.cloudflare.com`），等 24–48h；Cloudflare 上的记录如果没删，立刻恢复 |
 | DDNS 脚本报错 | 换回 Cloudflare 版脚本（令牌还在的话），或先手动改记录应急 |
 | 证书签发失败 | 现有证书仍有 90 天有效期，不影响访问；修好 acme.sh 再签 |
 | 证书部署出错 | `cp /usr/trim/nginx/conf/server.crt.bak.<日期> ...` 恢复并 `systemctl reload trim_nginx` |
