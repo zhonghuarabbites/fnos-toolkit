@@ -1,0 +1,34 @@
+# ============================================================
+# netwatch 配置 v3 —— 部署到 /etc/netwatch.conf，权限 600
+# 原则：NAS 只负责「探测 + 本地邮件」，微信交给 Worker
+# ============================================================
+
+# ---------- 身份 ----------
+NODE_NAME="fnos"
+
+# ---------- Worker 接口（两个地址，别写错）----------
+# 心跳：每分钟 GET 一次，供「NAS 完全离线」场景兜底
+HEARTBEAT_URL="https://hb.example.com/ping?k=CHANGE_ME_RANDOM_SECRET"
+# 告警：状态变化时 POST 一次，由 Worker 发微信
+NOTIFY_URL="https://hb.example.com/notify?k=CHANGE_ME_RANDOM_SECRET"
+
+# ---------- 邮件（NAS 本地 msmtp，常态告警走这里）----------
+MAIL_TO="you@example.com"
+MAIL_FROM="you@example.com"
+MAIL_CMD="msmtp"
+MAIL_ACCOUNT="qq"
+
+# ---------- 探测目标 ----------
+TARGET_V4="223.5.5.5"
+TARGET_V4_ALT="119.29.29.29"
+TARGET_V6="2400:3200::1"
+TARGET_V6_ALT="2402:4e00::"
+DNS_NAME="www.baidu.com"
+
+# ---------- 判定参数 ----------
+FAIL_THRESHOLD=3               # 连续失败几次判定断网（配合每分钟 = 约 3 分钟）
+DEGRADED_RENOTIFY=3600         # 降级告警重发间隔（秒）
+
+# ---------- 路径 ----------
+STATE_DIR="/var/lib/netwatch"
+LOG_FILE="/var/log/netwatch.log"
