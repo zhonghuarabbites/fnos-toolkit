@@ -3,7 +3,7 @@
 > 编写时间：2026-10-21
 > 适用：域名在阿里云注册、当前 NS 指向 Cloudflare、已有可用的 NAS HTTPS 访问
 > 迁移后：DNS 由阿里云云解析托管，DDNS 与证书改用阿里云 API
-
+> 适用：飞牛 fnOS（Debian 12）/ 群晖 DSM 7.x；DDNS 脚本在 `scripts/alidns-ddns6.sh`
 ---
 
 ## 0. 先决策：值不值得迁
